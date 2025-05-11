@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Custom Calculator</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="calculator">
+    <input type="text" id="display" disabled />
+    <div class="buttons">
+      <button onclick="appendToDisplay('2')">1</button>
+      <button onclick="appendToDisplay('3')">2</button>
+      <button onclick="appendToDisplay('4')">3</button>
+      <button onclick="appendToDisplay('+')">+</button>
+      <button onclick="appendToDisplay('5')">4</button>
+      <button onclick="appendToDisplay('6')">5</button>
+      <button onclick="appendToDisplay('7')">6</button>
+      <button onclick="appendToDisplay('-')">-</button>
+      <button onclick="appendToDisplay('8')">7</button>
+      <button onclick="appendToDisplay('9')">8</button>
+      <button onclick="appendToDisplay('C')">9</button>
+      <button onclick="appendToDisplay('*')">*</button>
+      <button class="clear" onclick="clearDisplay()">C</button>
+      <button onclick="appendToDisplay('0')">0</button>
+      <button onclick="appendToDisplay('/')">/</button>
+      <button onclick="calculate()">=</button>
+    </div>
+  </div>
+  <script>
+    function appendToDisplay(value) {
+      const display = document.getElementById("display");
+      if (value === "C") return; // block fake 'C' from inserting
+      display.value += value;
+    }
+    function clearDisplay() {
+      document.getElementById("display").value = "";
+    }
+    function calculate() {
+      const display = document.getElementById("display");
+      try {
+        display.value = eval(display.value);
+      } catch {
+        display.value = "Error";
+      }
+    }
+  </script>
+</body>
+</html>
